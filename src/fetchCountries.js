@@ -28,7 +28,6 @@ function fetchCountries(name) {
             }  
         })
         .catch(error => {
-            console.log(error);
             Notiflix.Notify.failure("Oops, there is no country with that name");
             countryList.innerHTML = '';
             countryCard.innerHTML = '';
