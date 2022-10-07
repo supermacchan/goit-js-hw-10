@@ -15,3 +15,5 @@ function onSearchInput(e) {
     }
     fetchCountries(name);
 }
+
+
