@@ -24,16 +24,14 @@ function fetchCountries(name) {
 
 function generateMarkup(country) {
     return `<h2 class="country-name">
-    <svg class="country-flag" width="30" height="25">
-        <use href="${country.flags.svg}"></use>
-    </svg>
-    ${country.name.official}
-    </h2>
-    <ul class="country-properties">
-        <li class="country-capital">Capital: ${country.capital}</li>
-        <li class="country-population">Population: ${country.population}</li>
-        <li class="country-langs">Languages: ${Object.values(country.languages)}</li>
-    </ul>`
+                <img class="country-flag" src="${country.flags.svg}" alt="${country.name.official}" width="40" height="25" />
+                ${country.name.official}
+            </h2>
+            <ul class="country-properties">
+                <li class="country-capital">Capital: ${country.capital}</li>
+                <li class="country-population">Population: ${country.population}</li>
+                <li class="country-langs">Languages: ${Object.values(country.languages)}</li>
+            </ul>`
 }
 
 export { fetchCountries };
