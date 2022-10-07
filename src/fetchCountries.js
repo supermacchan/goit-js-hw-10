@@ -14,16 +14,15 @@ function fetchCountries(name) {
         .then(data => {
             if (data.length > 10) {
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+                countryList.innerHTML = '';
+                countryCard.innerHTML = '';
                 return;
             } else if (data.length >= 2 && data.length <= 10) {
-                console.log(data);
                 const newList = generateCountryList(data);
                 countryList.innerHTML = newList;
                 countryCard.innerHTML = '';
             } else if (data.length === 1) {
-                console.log(data[0]);
                 const newMarkup = generateCountryMarkup(data[0]);
-                console.log(newMarkup);
                 countryCard.innerHTML = newMarkup;
                 countryList.innerHTML = '';
             }  
@@ -49,7 +48,8 @@ function generateCountryMarkup(country) {
 }
 
 function generateCountryList(countries) {
-    result = countries.map(country => {
+    return countries
+        .map(country => {
         const flag = country.flags.svg;
         const name = country.name.official;
         return `<div><p class="country-name">
@@ -57,8 +57,8 @@ function generateCountryList(countries) {
                 ${name}
                 </p></div>`
         
-    })
-    return result.join('');
+        })
+        .join('');
 }
 
 
