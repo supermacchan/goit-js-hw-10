@@ -1,5 +1,7 @@
 import Notiflix from 'notiflix';
 
+const countryCard = document.querySelector('.country-info');
+
 function fetchCountries(name) {
     fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
@@ -12,7 +14,7 @@ function fetchCountries(name) {
             console.log(data[0]);
             const markup = generateMarkup(data[0]);
             console.log(markup);
-            return markup;
+            countryCard.innerHTML = markup;
         })
         .catch(error => {
             console.log(error);
@@ -22,7 +24,7 @@ function fetchCountries(name) {
 
 function generateMarkup(country) {
     return `<h2 class="country-name">
-    <svg class="country-flag">
+    <svg class="country-flag" width="30" height="25">
         <use href="${country.flags.svg}"></use>
     </svg>
     ${country.name.official}
